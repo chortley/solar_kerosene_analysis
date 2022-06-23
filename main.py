@@ -90,6 +90,6 @@ def insert_variable_into_table(date, solar_kerosene_price, jet_fuel_price,
             print('MySQL Connection is closed.')
 
 
-# insert_variable_into_table(date_extracted, kerosene_price_per_litre, oil_price_per_litre, jet_fuel_total_cost,
-#                            kerosene_total_cost, difference)
+insert_variable_into_table(date_extracted, kerosene_price_per_litre, oil_price_per_litre, jet_fuel_total_cost,
+                           kerosene_total_cost, difference)
 
