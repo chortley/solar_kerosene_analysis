@@ -53,7 +53,7 @@ def difference_calculator(oil_cost, kerosene_cost):
 
 difference = round(difference_calculator(jet_fuel_total_cost, kerosene_total_cost), 1)
 
-print(jet_fuel_total_cost, kerosene_total_cost, difference)
+print(oil_barrel_value, oil_price_per_litre, jet_fuel_total_cost, kerosene_total_cost, difference)
 
 
 # DB Connection:
@@ -90,6 +90,5 @@ def insert_variable_into_table(date, solar_kerosene_price, jet_fuel_price,
             print('MySQL Connection is closed.')
 
 
-insert_variable_into_table(date_extracted, kerosene_price_per_litre, oil_price_per_litre, jet_fuel_total_cost,
-                           kerosene_total_cost, difference)
-
+# insert_variable_into_table(date_extracted, kerosene_price_per_litre, oil_price_per_litre, jet_fuel_total_cost,
+#                            kerosene_total_cost, difference)
