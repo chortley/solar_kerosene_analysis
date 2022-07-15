@@ -49,12 +49,12 @@ kerosene_total_cost = total_cost_of_flight(kerosene_price_per_litre)
 
 difference = round(difference_calculator(jet_fuel_total_cost, kerosene_total_cost), 1)
 
-print(oil_barrel_value, oil_price_per_litre, jet_fuel_total_cost, kerosene_total_cost, difference)
+print(oil_barrel_value, oil_price_per_litre, jet_fuel_total_cost, kerosene_total_cost, difference, oil_barrel_value)
 
 
 # DB Connection:
 def insert_variable_into_table(date, solar_kerosene_price, jet_fuel_price,
-                               total_cost_jet_fuel, total_cost_solar_kerosene, difference):
+                               total_cost_jet_fuel, total_cost_solar_kerosene, difference, barrel_price):
     try:
         connection = mysql.connector.connect(
             host='localhost',
@@ -71,7 +71,7 @@ def insert_variable_into_table(date, solar_kerosene_price, jet_fuel_price,
         VALUES (%s, %s, %s, %s, %s, %s)"""
 
         record = (date, solar_kerosene_price, jet_fuel_price,
-                  total_cost_jet_fuel, total_cost_solar_kerosene, difference)
+                  total_cost_jet_fuel, total_cost_solar_kerosene, difference, barrel_price)
         cursor.execute(insert_query, record)
         connection.commit()
         print('Record inserted succesfully')
@@ -86,5 +86,5 @@ def insert_variable_into_table(date, solar_kerosene_price, jet_fuel_price,
             print('MySQL Connection is closed.')
 
 
-insert_variable_into_table(date_extracted, kerosene_price_per_litre, oil_price_per_litre, jet_fuel_total_cost,
-                           kerosene_total_cost, difference)
+# insert_variable_into_table(date_extracted, kerosene_price_per_litre, oil_price_per_litre, jet_fuel_total_cost,
+#                            kerosene_total_cost, difference, oil_barrel_value)
