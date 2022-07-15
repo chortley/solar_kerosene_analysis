@@ -15,31 +15,15 @@ price_div_container = soup.find_all('div', {"class": "rich-text"})[1]
 
 price_sentence = price_div_container.findChild('p', recursive=False)
 
-oil_barrel_value = float(str(price_sentence).partition('$')[2][:5])
-
-date_extracted = date.today()
-
-print(date_extracted)
-
 
 def barrel_to_litre(barrel_price):
     per_liter = barrel_price / 158.987
     return per_liter
 
 
-oil_price_per_litre = round(barrel_to_litre(oil_barrel_value), 3)
-
-kerosene_price_per_litre = 1.775
-
-
 def total_cost_of_flight(fuel):
     fuel_expenditure = 4 * (fuel * 2508)
     return fuel_expenditure
-
-
-jet_fuel_total_cost = round(total_cost_of_flight(oil_price_per_litre), 1)
-
-kerosene_total_cost = total_cost_of_flight(kerosene_price_per_litre)
 
 
 def difference_calculator(oil_cost, kerosene_cost):
@@ -50,6 +34,18 @@ def difference_calculator(oil_cost, kerosene_cost):
         difference = kerosene_cost - oil_cost
         return difference
 
+
+oil_barrel_value = float(str(price_sentence).partition('$')[2][:5])
+
+date_extracted = date.today()
+
+oil_price_per_litre = round(barrel_to_litre(oil_barrel_value), 3)
+
+kerosene_price_per_litre = 1.775
+
+jet_fuel_total_cost = round(total_cost_of_flight(oil_price_per_litre), 1)
+
+kerosene_total_cost = total_cost_of_flight(kerosene_price_per_litre)
 
 difference = round(difference_calculator(jet_fuel_total_cost, kerosene_total_cost), 1)
 
@@ -90,5 +86,5 @@ def insert_variable_into_table(date, solar_kerosene_price, jet_fuel_price,
             print('MySQL Connection is closed.')
 
 
-# insert_variable_into_table(date_extracted, kerosene_price_per_litre, oil_price_per_litre, jet_fuel_total_cost,
-#                            kerosene_total_cost, difference)
+insert_variable_into_table(date_extracted, kerosene_price_per_litre, oil_price_per_litre, jet_fuel_total_cost,
+                           kerosene_total_cost, difference)
