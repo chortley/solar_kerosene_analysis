@@ -66,9 +66,9 @@ def insert_variable_into_table(date, solar_kerosene_price, jet_fuel_price,
         cursor = connection.cursor()
 
         insert_query = """INSERT INTO fuel_prices (
-        date, solar_kerosene_price, jet_fuel_price, total_cost_jet_fuel, total_cost_solar_kerosene, difference
+        date, solar_kerosene_price, jet_fuel_price, total_cost_jet_fuel, total_cost_solar_kerosene, difference, jet_fuel_barrel_price
         )
-        VALUES (%s, %s, %s, %s, %s, %s)"""
+        VALUES (%s, %s, %s, %s, %s, %s, %s)"""
 
         record = (date, solar_kerosene_price, jet_fuel_price,
                   total_cost_jet_fuel, total_cost_solar_kerosene, difference, barrel_price)
@@ -86,5 +86,5 @@ def insert_variable_into_table(date, solar_kerosene_price, jet_fuel_price,
             print('MySQL Connection is closed.')
 
 
-# insert_variable_into_table(date_extracted, kerosene_price_per_litre, oil_price_per_litre, jet_fuel_total_cost,
-#                            kerosene_total_cost, difference, oil_barrel_value)
+insert_variable_into_table(date_extracted, kerosene_price_per_litre, oil_price_per_litre, jet_fuel_total_cost,
+                           kerosene_total_cost, difference, oil_barrel_value)
